@@ -1,14 +1,11 @@
+
 class Animation {
-  constructor(n) {
-    this.primes = [2, 3, 5, 7,11];
-    this.n = n;
+  constructor() {
+    this.primes = [2, 3, 5, 7,11,13,17,19];
     let x = 175;
     let y = 12;
     this.space = 80;
     this.pl = new PrimeList(this.primes,x,y,this.space);
-    this.value = 1;  // current value of the pf
-    this.limit = 4;  //think more about this.
-    this.pfList = [];
   }
 
   show() {
@@ -59,9 +56,9 @@ class Animation {
                     this.value = this.product.val;
                     delete this.product;
                     this.nextMove();
-                  },400);
-                }, 500);
-              }, 1000);
+                  },speed.value()*2);
+                }, speed.value()*2);
+              }, speed.value()*2);
             } else {
               this.product.flash();
               setTimeout(() => {
@@ -72,11 +69,11 @@ class Animation {
                   this.cur = 0;
                   this.nextMove();
                 }
-              },1200);
+              },speed.value()*5);
             }
-          }, 1500);
-        }, 1000)
-      }, 1000);
+          }, speed.value()*6);
+        }, speed.value()*4)
+      }, speed.value()*4);
   }
   final() {
     for (let f of this.pfList) {
@@ -122,14 +119,18 @@ class Animation {
         // I need to add the proper constraint with coloring to
         // show what I am talking about here.
         this.nextMove();
-      },500);
-    },1000);
+      },speed.value()*2);
+    },speed.value()*4);
 
     //create a new pl with constraints and load the values
     // run the whole thing again with
   }
 
   run() {
+    this.n = n.value();
+    this.value = 1;  // current value of the pf
+    this.limit = 100;  //think more about this.
+    this.pfList = [];
     this.pf = new Pf([0,0,0,0,0],createVector(200,250),80);
     this.cur = 0;
     this.nextMove();

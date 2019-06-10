@@ -7,7 +7,7 @@ class Num {
     this.visible = true;
   }
   glideTo(posChange,font) {
-    let dur = 400;
+    let dur = speed.value()*1.5;
     this.trans = new Transition(dur);
     this.glide = posChange.sub(this.pos);
     this.fontChange = font - this.font;
@@ -20,7 +20,7 @@ class Num {
     }, dur)
   }
   flash() {
-    let dur = 1200;
+    let dur = speed.value()*5;
     this.trans = new Transition(dur);
     this.flash = true;
     setTimeout(()=> {
